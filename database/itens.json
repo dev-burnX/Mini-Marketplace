@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "nome": "Coca Cola 350ml",
+    "preco": 3.30,
+    "descricao": "Refrigerante Coca-Cola 350ml"
+  },
+  {
+    "id": 2,
+    "nome": "Monster Original 473ml",
+    "preco": 9.90,
+    "descricao": "Energético Monster Original 473ml"
+  },
+  {
+    "id": 3,
+    "nome": "Amaciante Downy 900ml",
+    "preco": 27.99,
+    "descricao": "Amaciante Downy concentrado perfumado"
+  },
+  {
+    "id": 4,
+    "nome": "Brilhante Lava Roupa 3L",
+    "preco": 31.99,
+    "descricao": "Detergente Brilhate para roupas 3L"
+  },
+  {
+    "id": 5,
+    "nome": "Peito de Frango Sadia 1KG",
+    "preco": 17.99,
+    "descricao": "Filé de Peito 1KG"
+  },
+  {
+    "id": 6,
+    "nome": "Biscoito Marilan",
+    "preco": 9.69,
+    "descricao": "Biscoito Marilan Torinha 3un"
+  },
+  {
+    "id": 7,
+    "nome": "Açucar Itamarati 1KG",
+    "preco": 3.49,
+    "descricao": "Açucar"
+  },
+  {
+    "id": 8,
+    "nome": "Bolacha Cream Craker Marisa",
+    "preco": 5.85,
+    "descricao": "Bolacha Cream Craker Marisa 3un"
+  }
+  
+]

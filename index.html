@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <section class="sectionMenu">
+            <div id="menu">
+                <!-- Botão Hamburger -->
+                <div id="hamburger" onclick="menuOnClick()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+
+                <!-- Menu de Navegação -->
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><button id="adicionarSaldo" class="btnAdicionarSaldo">Adicionar Saldo</button></li>
+                        <li><button id="btnCadastrarItem" class="botaoCadastroAdmin" disabled="true">Cadastrar Itens</button></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p class="menu-bg" id="menu-bg"></p>
+            
+            <!-- Carrinho -->
+            <a id="carrinho"><img class="carrinho" src="assets/Carrinho.png" width="32px" height="32px"></a>
+            
+            <!-- Logo -->
+            <a href="#" class="home"><img class="logo" src="assets/logo.png" width="64px" height="64px"></a>
+
+            <!-- Usuário -->
+            
+            <button class="botaoLogin" id="botaoLogin">Entrar</button>
+            <button class="botaoUsuario" id="botaoUsuario" hidden="true">
+                <p id="textoBotaoUsuario" class="textoBotaoUsuario">Usuario</p>
+                <div class="menuUsuario" id="menuUsuario">
+                    <p id="usuarioId">Nome do Usuario</p>
+                    <p id="usuarioNivel">Ex:Usuario Comum</p>
+                    <span id="botaoLogout" class="botaoLogout">Sair</span>
+                </div>
+            </button>
+            
+        </section>
+
+    </header>
+    
+    <!-- Saldos -->
+
+    <section class="saldoGeral">
+        <div id="saldoCarteira">
+            <img src="assets/cifrao.png" width="32px" height="32px">
+            <div>
+                <p class="textoValorAtual">Saldo atual</p>
+                <h3 id="saldoAtual">R$0.00</h3>
+            </div>
+        </div>
+    </section>
+
+    <main class="main">
+        <!-- Lista de Produtos -->
+        <ul id="lista" class="lista"></ul>
+
+
+        <!-- ===== ===== SEÇÃO MODAL ===== ===== -->
+
+        <!-- Cadastrar Itens -->
+
+        <div class="modalCadastro" id="modalCadastro" hidden="true">
+            <div id="menuCadastro" class="cadastro">
+                <h3>Cadastrar Item</h3>
+                <button id="fecharTela">❌</button>
+                <form class="form">
+                    <input type="text" placeholder="Item" id="inputItem">
+                    <input type="number" placeholder="Preço" id="inputPreco">
+                    <input type="text" placeholder="Descrição" id="inputDescricao">
+                    <button type="submit" id="botaoAdicionarProduto">Adicionar</button>
+                    <p>Como adicionar?</p>
+                    <p>Ex: Coca-Cola 350ml</p>
+                    <p>Preços devem conter pontos (".") no lugar de vírgulas. Não colocar "R$"!</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Adicionar Saldo -->
+
+        <div class="modalSaldo" id="modalSaldo" hidden="true">
+            <div class="adicionarSaldo" id="menuDeposito">
+                <h3>Adicionar Saldo</h3>
+                <button id="fecharDeposito">❌</button>
+                <form class="form">
+                    <label for="inputDepositar" id="saldoAtualLabel">R$ 0.00</label>
+                    <input type="number" placeholder="Quanto quer depositar?" id="inputDepositar">
+                    <label for="inputDepositar" id="erroDepositarSaldo" class="erroDepositarSaldo"></label>
+                    <button type="submit" id="botaoAdicionarSaldo">Depositar</button>
+                    <p>Obs: Se for pobre vai embora!</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Usuário -->
+
+        <div class="modalLogin" id="modalLogin" hidden="true">
+            <div class="menuLogin">
+                <h3>Login Usuário</h3>
+                <form class="form">
+                    <label for="inputEmailLogin">E-mail:</label>
+                    <input type="email" id="inputEmailLogin" placeholder="Digite seu e-mail">
+                    <label for="inputSenhaLogin">Senha:</label>
+                    <input type="password" id="inputSenhaLogin" placeholder="Digite sua senha">
+                    <label id="erroLogin" class="erroLogin"></label>
+                    <button id="botaoLoginUsuario">Entrar</button>
+                    <button id="fecharLogin">Fechar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Área de Pagamento -->
+
+        <div class="modalPagamento" id="modalPagamento" hidden="true">
+            <div class="menuPagamento">
+                <h3>Pagamento</h3>
+                <form class="form">
+                    <div>
+                        <p>Saldo Carteira:</p>
+                        <span id="saldoCarteiraPagamento">R$0.00</span>
+                    </div>
+                    <div>
+                        <p>Subtotal:</p>
+                        <span id="subtotalPagamento"></span>
+                    </div>
+                    <div>
+                        <p>Troco:</p>
+                        <span id="trocoPagamento"></span>
+                        <span id="erroPagamento" class="erroPagamento"></span>
+                    </div>
+                    <button id="botaoPagar">Pagar</button>
+                    <button id="fecharPagamento">Fechar</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <!-- Rodapé Valor Carrinho -->
+        <div id="valorCarrinho">
+            <img src="assets/valorCarrinho.png" width="32px" height="32px">
+            <div>
+                <p class="textoValorAtual">Valor atual</p>
+                <h3 id="saldoCarrinho">R$ 0.00</h3>
+            </div>
+        </div>
+        <buttom id="verSacola" class="botaoAdicionar">Ver Sacola</buttom>
+
+
+    </footer>
+
+    <!--
+        Apartir daqui o pequeno rodapé vai subir e mostrar a lista do carrinho
+    -->
+    <section class="sessaoCarrinho" id="sessaoCarrinho">
+        
+        <img src="./assets/carrinho-vazio.png" alt="Lista Vazia" class="carrinhoVazio">
+
+        <ul class="listaCarrinho" id="listaCarrinho">
+        </ul>
+
+        <!-- Resumo de valores -->
+        <div class="areaPagamento">
+
+            <button class="puxarAbaPagamento"><div></div></button>
+
+            <h3>Resumo de valores</h3>
+            <div class="subtotalCarrinho">
+                <p>Subtotal</p>
+                <span id="subtotalCarrinho">R$0.00</span>
+            </div>
+            <div class="dividirPagamento">
+                <p>Dividir?</p>
+                <select id="divisor">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="totalPorPessoa">
+                <p>Cada</p>
+                <span id="totalPorPessoa">R$0.00</span>
+            </div>
+            <div class="totalCarrinho">
+                <p>Total</p>
+                <span id="totalCarrinho">R$0.00</span>
+            </div>
+            
+        </div>
+
+        <!-- Botões Voltar e Continuar -->
+        <div class="botaoAreaPagamento">
+            <button class="botaoVoltar">Voltar</button>
+            <button class="botaoContinuar">Continuar</button>
+        </div>
+
+
+    </section>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
