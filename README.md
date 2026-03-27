@@ -1,4 +1,4 @@
-# Mini Marketplace
+# Mini Marketplace v1.0
 
     Um pequeno sistema de carrinho de compras desenvolvido para auxiliar na organização de compras em supermercados.
 
@@ -41,7 +41,9 @@
     - Melhorar a estrutura do código
     - Aumentar o uso de funções
     - Tornar o código mais modular e de fácil manutenção
+    - Adicionar menu de cadastro de usuário
+    - Melhorar banco de dados (ex: LocalStorage)
 
 ## Autor
 
-    Luiz — Estudante de Análise e Desenvolvimento de Sistemas
+    dev-burnX — Estudante de Análise e Desenvolvimento de Sistemas
