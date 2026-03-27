@@ -10,7 +10,7 @@
     --cor-texto-secundario:#7e7e7e;
     --cor-texto-botoes:#d4d4d4;
     --cor-texto-preco:green;
-    --cor-sombras: rgba(0, 0, 0, 0.30);
+    --cor-sombras: rgba(0, 0, 0, 0.22);
     --cor-sombras-claro: rgba(0, 0, 0, 0.15);
     --cor-bordas: rgba(175, 175, 175, 0.75);
     --cor-icons: invert(0.8);
@@ -391,7 +391,7 @@ body{
     background-color: var(--cor-secundaria);
     border-radius: 10px;
     position: fixed;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
     box-shadow: 1px 1px 10px var(--cor-sombras);
@@ -457,11 +457,8 @@ body{
 }
 
 #fecharTela, #fecharDeposito{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    top: 10px;
-    right: 10px;
+    background-color: var(--cor-principal);
+    border: var(--cor-bordas);
     cursor: pointer;
 }
 
@@ -495,10 +492,10 @@ body{
 
 .botaoAdicionar{
     width: 150px;
-    padding: 0.3rem 1rem;
     background-color: var(--cor-principal);
-    border-radius: 5px;
     text-align: center;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
     box-shadow: 1px 1px 5px var(--cor-sombras);
     border: 1px solid var(--cor-bordas);
     color: var(--cor-texto-botoes);
@@ -523,10 +520,11 @@ body{
 
 .carrinhoVazio{
     position: fixed;
-    top: 15%;
-    left: 25%;
+    top: 25%;
+    left: 27%;
     width: 200px;
     height: auto;
+    opacity: 0.5;
 }
 
 .listaCarrinho{
@@ -536,29 +534,25 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    height: 55%;
+    height: 79%;
     overflow: auto;
     transition: height 0.2s ease;
 }
 
 .itemCarrinho{
     padding: 0.75rem 1rem;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    height: 85px;
     align-items: center;
-    border: 1px solid var(--cor-bordas);
     border-radius: 5px;
-    box-shadow: 0px 0px 4px var(--cor-sombras);
+    box-shadow: 0px 0px 5px var(--cor-sombras);
     background-color: var(--cor-secundaria);
 }
 
 .botoesItemCarrinho{
     display: flex;
     justify-content: end;
-    align-items: center;
-    gap: 15px;
-    font-size: 25px;
-    font-weight: 400;
 }
 
 .excluirItem{
@@ -566,12 +560,19 @@ body{
     background:none;
     border: none;
     box-shadow: 0px 0px 4px var(--cor-sombras);
-    border-radius: 10px ;
+    border-radius: 5px ;
 }
 
 .conteudoItem{
     display: flex;
     flex-direction: column;
+}
+
+.conteudoItem h3{
+    font-size: 1rem;
+}
+.conteudoItem p{
+    font-size: 0.85rem;
 }
 
 /* ===== Area de Pagamento ===== */
@@ -582,16 +583,7 @@ body{
     box-sizing: border-box;
     z-index: 5;
     width: 100%;
-    position: fixed;
-    bottom: 5rem; /* Botão proporcional ao translate do sessaoCarrinho */
-    box-shadow: 0px 0px 10px var(--cor-sombras);
     gap: 1rem;
-    padding: 1rem;
-    height: 32%;
-    background-color: var(--cor-secundaria);
-
-    transition: transform 0.2s ease;
-    touch-action: none;
 }
 
 .subtotalCarrinho{
@@ -628,56 +620,39 @@ body{
 .botaoAreaPagamento{
     z-index: 10;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: fixed;
     width: 100%;
     bottom: 5rem;
     box-sizing: border-box;
     left: 0;
-    padding: 1rem;
+    padding: 1.2rem;
     box-shadow: 0px 0px 5px var(--cor-sombras);
     background-color: var(--cor-secundaria);
+    gap: 15px;
 }
 
 .botaoContinuar{
     background-color: var(--cor-principal);
-    border: 1px solid var(--cor-bordas);
-    width:40%;
-    padding: 0.5rem;
-    border-radius: 5px;
-    color: var(--cor-texto-botoes);
+    width:50%;
     font-size: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px var(--cor-sombras);
+    border: 1px solid var(--cor-bordas);
+    color: var(--cor-texto-botoes);
     font-weight: 600;
-    box-shadow: var(--cor-sombras);
 }
 
 .botaoVoltar{
-    background-color: #BF3E21;
-    border: 1px solid var(--cor-bordas);
-    width:40%;
-    padding: 0.5rem;
-    border-radius: 5px;
-    color: var(--cor-texto-botoes);
+    background-color: #7c7c7c;
+    width:50%;
     font-size: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px var(--cor-sombras);
+    border: 1px solid var(--cor-bordas);
+    color: var(--cor-texto-botoes);
     font-weight: 600;
-    box-shadow: var(--cor-sombras);
 }
 
-/* ===== Puxar Aba Pagamento ===== */
-.puxarAbaPagamento{
-    position: absolute;
-    display: flex;
-    padding: 7px 0;
-    width: 100%;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    border: none;
-    justify-content: center;
-}
-
-.puxarAbaPagamento div{
-    background-color: black;
-    width: 25px;
-    height: 2px;
-}

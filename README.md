@@ -1,40 +1,47 @@
-Mini Marketplace — v1.0
+# Mini Marketplace
 
-Primeira versão estruturada do projeto, trazendo melhorias na organização do código e preparação para expansão com múltiplas páginas.
+    Um pequeno sistema de carrinho de compras desenvolvido para auxiliar na organização de compras em supermercados.
 
-✨ Destaques
-Nova página "Sobre" com informações do projeto
-Inclusão de imagens comparando versão atual e versão beta
-Refatoração do header com script global
-Melhor organização e separação de responsabilidades
+    O projeto é voltado principalmente para pessoas com orçamento limitado, que precisam planejar melhor suas compras. Com ele, é possível selecionar os produtos antes de ir ao mercado, tendo uma noção mais precisa de quanto será gasto.
 
-📄 Página "Sobre"
-Página dedicada com descrição do projeto
-Conteúdo baseado no README
-Adição de imagens da evolução do sistema (beta → atual)
+    O sistema não possui uma base de dados completa de mercados específicos. Portanto, o próprio usuário deve cadastrar os produtos manualmente, podendo utilizar, por exemplo, uma nota fiscal antiga como referência para inserir nome, preço e descrição dos itens.
 
-🧩 Estrutura do Projeto
-Criação do arquivo header.js
-Header agora global e reutilizável
-Separação do script.js, deixando o código mais organizado
+    Muitas pessoas costumam comprar sempre os mesmos produtos, mas eventualmente desejam variar. No entanto, limitações financeiras podem dificultar essas escolhas. O Mini Marketplace surge como uma ferramenta para auxiliar nesse controle, permitindo mais planejamento e decisões mais conscientes.
 
-🛠️ Melhorias Técnicas
-Código mais modular
-Preparação para múltiplas páginas
-Melhor legibilidade e manutenção
+## Funcionalidades
+    
+    - Adicionar e remover itens do carrinho
+    - Ajustar a quantidade de cada item
+    - Cálculo automático do total do carrinho
+    - Simulação de depósito de saldo (valor fictício)
+    - Divisão do valor total entre até 4 pessoas
+    - Cálculo de troco após pagamento (atualizando o saldo)
 
-Status
-O projeto ainda está em desenvolvimento e continuará recebendo atualizações.
+## Como executar?
 
-Próximos Desenvolvimentos
+    O projeto pode ser executado diretamente pelo navegador, através do GitHub Pages (ou abrindo o arquivo index.html localmente).
 
-👤 Sistema de Usuário
-Implementação de cadastro de usuário
-Armazenamento de dados no navegador (ex: LocalStorage)
+## Sobre o projeto
 
-🗄️ Persistência de Dados
-Criação de um “banco de dados” local para salvar informações do usuário e do carrinho
+    Este projeto foi desenvolvido com foco em aprendizado, com base nos conhecimentos adquiridos durante o curso de Análise e Desenvolvimento de Sistemas.
 
-🛒 Cadastro de Itens
-Melhorias no sistema de cadastro de produtos
-Inclusão de opção para adicionar imagem aos itens
+    Atualmente, ele está em desenvolvimento contínuo e recebe atualizações frequentes. O objetivo é melhorar a organização do código, a legibilidade e a experiência do usuário conforme a evolução dos estudos.
+
+## O que temos nesse projeto?
+
+    - HTML
+    - CSS
+    - JavaScript
+    - JSON (utilizado como um pequeno banco de dados local)
+
+## Melhorias futuras
+
+    Atualmente, o projeto possui muitos eventos ligados diretamente a botões e poucas funções reutilizáveis. Nas próximas atualizações, a intenção é:
+
+    - Melhorar a estrutura do código
+    - Aumentar o uso de funções
+    - Tornar o código mais modular e de fácil manutenção
+
+## Autor
+
+    Luiz — Estudante de Análise e Desenvolvimento de Sistemas

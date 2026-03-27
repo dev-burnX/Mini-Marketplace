@@ -20,11 +20,11 @@
                 <!-- Menu de Navegação -->
                 <nav class="nav" id="nav">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><button id="adicionarSaldo" class="btnAdicionarSaldo">Adicionar Saldo</button></li>
                         <li><button id="btnCadastrarItem" class="botaoCadastroAdmin" disabled="true">Cadastrar Itens</button></li>
-                        <li><a href="#">Contato</a></li>
-                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
                     </ul>
                 </nav>
             </div>
@@ -34,7 +34,7 @@
             <a id="carrinho"><img class="carrinho" src="assets/Carrinho.png" width="32px" height="32px"></a>
             
             <!-- Logo -->
-            <a href="#" class="home"><img class="logo" src="assets/logo.png" width="64px" height="64px"></a>
+            <a href="index.html" class="home"><img class="logo" src="assets/logo.png" width="64px" height="64px"></a>
 
             <!-- Usuário -->
             
@@ -76,12 +76,12 @@
         <div class="modalCadastro" id="modalCadastro" hidden="true">
             <div id="menuCadastro" class="cadastro">
                 <h3>Cadastrar Item</h3>
-                <button id="fecharTela">❌</button>
                 <form class="form">
                     <input type="text" placeholder="Item" id="inputItem">
                     <input type="number" placeholder="Preço" id="inputPreco">
                     <input type="text" placeholder="Descrição" id="inputDescricao">
                     <button type="submit" id="botaoAdicionarProduto">Adicionar</button>
+                    <button id="fecharTela">Fechar</button>
                     <p>Como adicionar?</p>
                     <p>Ex: Coca-Cola 350ml</p>
                     <p>Preços devem conter pontos (".") no lugar de vírgulas. Não colocar "R$"!</p>
@@ -94,12 +94,12 @@
         <div class="modalSaldo" id="modalSaldo" hidden="true">
             <div class="adicionarSaldo" id="menuDeposito">
                 <h3>Adicionar Saldo</h3>
-                <button id="fecharDeposito">❌</button>
                 <form class="form">
                     <label for="inputDepositar" id="saldoAtualLabel">R$ 0.00</label>
                     <input type="number" placeholder="Quanto quer depositar?" id="inputDepositar">
                     <label for="inputDepositar" id="erroDepositarSaldo" class="erroDepositarSaldo"></label>
                     <button type="submit" id="botaoAdicionarSaldo">Depositar</button>
+                    <button id="fecharDeposito">Fechar</button>
                     <p>Obs: Se for pobre vai embora!</p>
                 </form>
             </div>
@@ -111,8 +111,8 @@
             <div class="menuLogin">
                 <h3>Login Usuário</h3>
                 <form class="form">
-                    <label for="inputEmailLogin">E-mail:</label>
-                    <input type="email" id="inputEmailLogin" placeholder="Digite seu e-mail">
+                    <label for="inputEmailLogin">Usuário:</label>
+                    <input type="text" id="inputEmailLogin" placeholder="Usuário">
                     <label for="inputSenhaLogin">Senha:</label>
                     <input type="password" id="inputSenhaLogin" placeholder="Digite sua senha">
                     <label id="erroLogin" class="erroLogin"></label>
@@ -132,10 +132,33 @@
                         <p>Saldo Carteira:</p>
                         <span id="saldoCarteiraPagamento">R$0.00</span>
                     </div>
-                    <div>
-                        <p>Subtotal:</p>
-                        <span id="subtotalPagamento"></span>
+
+                    <!-- Resumo de valores -->
+                    <div class="areaPagamento">
+                        <h3>Resumo de valores</h3>
+                        <div class="subtotalCarrinho">
+                            <p>Subtotal</p>
+                            <span id="subtotalCarrinho">R$0.00</span>
+                        </div>
+                        <div class="dividirPagamento">
+                            <p>Dividir?</p>
+                            <select id="divisor">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="totalPorPessoa">
+                            <p>Cada</p>
+                            <span id="totalPorPessoa">R$0.00</span>
+                        </div>
+                        <div class="totalCarrinho">
+                            <p>Total</p>
+                            <span id="totalCarrinho">R$0.00</span>
+                        </div>
                     </div>
+
                     <div>
                         <p>Troco:</p>
                         <span id="trocoPagamento"></span>
@@ -171,49 +194,21 @@
     <section class="sessaoCarrinho" id="sessaoCarrinho">
         
         <img src="./assets/carrinho-vazio.png" alt="Lista Vazia" class="carrinhoVazio">
+        
 
         <ul class="listaCarrinho" id="listaCarrinho">
         </ul>
 
-        <!-- Resumo de valores -->
-        <div class="areaPagamento">
-
-            <button class="puxarAbaPagamento"><div></div></button>
-
-            <h3>Resumo de valores</h3>
-            <div class="subtotalCarrinho">
-                <p>Subtotal</p>
-                <span id="subtotalCarrinho">R$0.00</span>
-            </div>
-            <div class="dividirPagamento">
-                <p>Dividir?</p>
-                <select id="divisor">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            <div class="totalPorPessoa">
-                <p>Cada</p>
-                <span id="totalPorPessoa">R$0.00</span>
-            </div>
-            <div class="totalCarrinho">
-                <p>Total</p>
-                <span id="totalCarrinho">R$0.00</span>
-            </div>
-            
-        </div>
-
         <!-- Botões Voltar e Continuar -->
         <div class="botaoAreaPagamento">
-            <button class="botaoVoltar">Voltar</button>
+            <button class="botaoVoltar">Fechar</button>
             <button class="botaoContinuar">Continuar</button>
         </div>
 
 
     </section>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>

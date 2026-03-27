@@ -3,49 +3,113 @@
     "id": 1,
     "nome": "Coca Cola 350ml",
     "preco": 3.30,
-    "descricao": "Refrigerante Coca-Cola 350ml"
+    "descricao": "Refrigerante Coca-Cola 350ml",
+    "imagem": "./assets/coca-cola-zero-350ml.png"
   },
   {
     "id": 2,
     "nome": "Monster Original 473ml",
     "preco": 9.90,
-    "descricao": "Energético Monster Original 473ml"
+    "descricao": "Energético Monster Original 473ml",
+    "imagem": "./assets/monster.png"
   },
   {
     "id": 3,
     "nome": "Amaciante Downy 900ml",
     "preco": 27.99,
-    "descricao": "Amaciante Downy concentrado perfumado"
+    "descricao": "Amaciante Downy concentrado perfumado",
+    "imagem": "./assets/amaciante.png"
   },
   {
     "id": 4,
     "nome": "Brilhante Lava Roupa 3L",
     "preco": 31.99,
-    "descricao": "Detergente Brilhate para roupas 3L"
+    "descricao": "Detergente Brilhate para roupas 3L",
+    "imagem": "./assets/lava_roupa_brilhante.png"
   },
   {
     "id": 5,
     "nome": "Peito de Frango Sadia 1KG",
     "preco": 17.99,
-    "descricao": "Filé de Peito 1KG"
+    "descricao": "Filé de Peito 1KG",
+    "imagem": "./assets/peito_frango_sadia.png"
   },
   {
     "id": 6,
     "nome": "Biscoito Marilan",
     "preco": 9.69,
-    "descricao": "Biscoito Marilan Torinha 3un"
+    "descricao": "Biscoito Marilan Torinha 3un",
+    "imagem": "./assets/biscoito_marilan.png"
   },
   {
     "id": 7,
     "nome": "Açucar Itamarati 1KG",
     "preco": 3.49,
-    "descricao": "Açucar"
+    "descricao": "Açucar",
+    "imagem": "./assets/acucar_itamaraty.png"
   },
   {
     "id": 8,
     "nome": "Bolacha Cream Craker Marisa",
     "preco": 5.85,
-    "descricao": "Bolacha Cream Craker Marisa 3un"
+    "descricao": "Bolacha Cream Craker Marisa 3un",
+    "imagem": "./assets/cream_craker.png"
+  },
+  {
+    "id": 9,
+    "nome": "Detergente Minuano 500ml",
+    "preco": 2.79,
+    "descricao": "Detergente Lava Louça Minuano 500ml",
+    "imagem": "./assets/detergente_minuano.png"
+  },
+  {
+    "id": 10,
+    "nome": "Ovos Avine 10un",
+    "preco": 9.99,
+    "descricao": "Caixa de ovos Avine 10 unidades",
+    "imagem": "./assets/ovos_avine.png"
+  },
+  {
+    "id": 11,
+    "nome": "Macarrão Galo 500g",
+    "preco": 5.25,
+    "descricao": "Macarrão espaguete Galo 500g",
+    "imagem": "./assets/macarrao_galo.png"
+  },
+  {
+    "id": 12,
+    "nome": "Coentro Tradicional 1un",
+    "preco": 2.29,
+    "descricao": "Coentro",
+    "imagem": "./assets/coentro.png"
+  },
+  {
+    "id": 13,
+    "nome": "Alface Hidroponica",
+    "preco": 4.89,
+    "descricao": "Alface",
+    "imagem": "./assets/alface.png"
+  },
+  {
+    "id": 14,
+    "nome": "Goma de Tapioca",
+    "preco": 4.89,
+    "descricao": "Tapioca",
+    "imagem": "./assets/tapioca.png"
+  },
+  {
+    "id": 15,
+    "nome": "Polpa Maracujá 400g",
+    "preco": 17.49,
+    "descricao": "Polpa de fruta Maracujá",
+    "imagem": "./assets/maracuja_poupa.png"
+  },
+  {
+    "id": 16,
+    "nome": "Biscoito Look",
+    "preco": 3.99,
+    "descricao": "Biscoito Itamaraty Look",
+    "imagem": "./assets/LOOK.png"
   }
   
 ]

@@ -1,18 +1,10 @@
-
-// ===== Menu Hamburger ===== //
-function menuOnClick(){
-    document.getElementById("hamburger").classList.toggle("change");
-    document.getElementById("nav").classList.toggle("change");
-    document.getElementById("menu-bg").classList.toggle("change-bg");
-}
-
 // ===== Lista de Itens ===== //
 
 fetch("./database/itens.json")
 .then(res => res.json())
 .then(produtos => {
 
-//  ===== Botões Adicionar Itens ===== //
+    //  ===== Alguns Globais de fetch ===== //
     const lista = document.getElementById("lista");
     let total = 0;
 
@@ -20,7 +12,10 @@ fetch("./database/itens.json")
     let carrinhoItens = [];
     let mapaItens = {};
 
-    
+    // ===== Ordenem Alfabética ===== //
+    produtos.sort((a, b) => a.nome.localeCompare(b.nome));
+
+    // ===== Início do forEach ===== //
     produtos.forEach(produto => {
 
         // ===== Mostrar Lista JSON na tela ===== //
@@ -30,7 +25,7 @@ fetch("./database/itens.json")
         item.classList.add("item")
         item.setAttribute("data-id", produto.id);
         item.innerHTML = `
-            <img id="iconItem" src="assets/item.png" width="64px" height="64px">
+            <img id="iconItem" src="${produto.imagem}" width="64px" height="64px">
             <div class="itemConteudo">
                 <h3 class="tituloItem">${produto.nome}</h3>
                 <p class="descricaoItem">${produto.descricao}</p>
@@ -74,6 +69,7 @@ fetch("./database/itens.json")
                     id: produto.id,
                     nome: produto.nome,
                     preco: produto.preco,
+                    imagem: produto.imagem,
                     quantidade: itemMap.contador
                 });
             }
@@ -151,7 +147,6 @@ fetch("./database/itens.json")
         subtotalCarrinho.textContent = `R$${total.toFixed(2)}` 
         totalCarrinho.textContent = `R$${total.toFixed(2)}`
         totalPorPessoa.textContent = `R$${total.toFixed(2)}`
-        subtotalPagamento.textContent = `R$${total.toFixed(2)}`;
     }
 
     
@@ -187,6 +182,7 @@ fetch("./database/itens.json")
 
                 itemCarrinho.classList.add("itemCarrinho")
                 itemCarrinho.innerHTML = `
+                <img id="iconItem" src="${item.imagem}" width="64px" height="64px">
                 <div class="conteudoItem">
                     <h3>${item.nome}</h3>
                     <div>
@@ -239,21 +235,24 @@ fetch("./database/itens.json")
 
     // ===== Área de Pagamento ===== //
 
-    
-    const subtotalPagamento = document.getElementById("subtotalPagamento");
     const pagar = document.getElementById("botaoPagar");
 
     function calcularTroco(){
-        const subtotal = total;
-        const saldo = saldoTotal;
-        const res = saldo - subtotal;
+        const res = saldoTotal - total;
 
         if(res < 0){
             erroPagamento.textContent = "Saldo insuficiente!"
             return
         }else{
             trocoPagamento.textContent = `R$${res.toFixed(2)}`
+            saldo.textContent = `R$${res.toFixed(2)}`
+            saldoCarteiraPagamento.textContent = `R$${res.toFixed(2)}`
+            saldoLabel.textContent = `R$${res.toFixed(2)}`
+
+            saldoTotal = res;
+
             erroPagamento.textContent = "";
+            limparCarrinho();
         }
 
     }
@@ -264,32 +263,36 @@ fetch("./database/itens.json")
         calcularTroco();
     })
 
+    // ===== LIMPAR CARRINHO ===== //
 
-})// Fim fetch
+    function limparCarrinho(){
+        carrinhoItens = [];
 
-// ===== FIM ===== //
+        Object.values(mapaItens).forEach(item => {
+            item.resetar();
+        });
 
+        listaCarrinho.innerHTML = "";
+
+        atualizarTotal();
+        atualizarFundoCarrinho();
+    }
+
+})
+//====================================================================================================//
 
 // ===== Menu Cadastrar Itens ===== //
 
-const botaoCadastrarItens = document.getElementById("btnCadastrarItem");
 const adicionarSaldo = document.getElementById("adicionarSaldo")
-const botaoLogin = document.getElementById("botaoLogin")
+
 const botaoContinuar = document.querySelector(".botaoContinuar")
 
 const menuDeposito = document.getElementById("menuDeposito")
-const menuCadastro = document.getElementById("menuCadastro");
 
-const botaoFecharTela = document.getElementById("fecharTela");
-const botaoFecharDeposito = document.getElementById("fecharDeposito")
-const botaoFecharLogin = document.getElementById("fecharLogin")
-const botaoFecharPagamento = document.getElementById("fecharPagamento")
+const botaoFecharDeposito = document.getElementById("fecharDeposito");
+const botaoFecharPagamento = document.getElementById("fecharPagamento");
 
-const nomeProdutoInput = document.getElementById("inputItem");
-const precoProdutoInput = document.getElementById("inputPreco");
-const descricaoProdutoInput = document.getElementById("inputDescricao");
-const botaoAdicionarProduto = document.getElementById("botaoAdicionarProduto");
-const botaoDepositar = document.getElementById("botaoAdicionarSaldo");
+const botaoDepositar = document.getElementById("botaoAdicionarSaldo"); 
 
 const saldo = document.getElementById("saldoAtual");
 const saldoLabel = document.getElementById("saldoAtualLabel");
@@ -300,7 +303,6 @@ const trocoPagamento = document.getElementById("trocoPagamento");
 
 const modalCadastro = document.getElementById("modalCadastro");
 const modalSaldo = document.getElementById("modalSaldo");
-const modalLogin = document.getElementById("modalLogin");
 const modalPagamento = document.getElementById("modalPagamento");
 
 // ===== ABRIR MODAL ===== //
@@ -313,21 +315,6 @@ adicionarSaldo.addEventListener("click", function () {
     document.getElementById("nav").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
 });
-
-botaoCadastrarItens.addEventListener("click", function () {
-    modalCadastro.hidden = false;
-    document.body.style.overflow = "hidden";
-
-
-    document.getElementById("hamburger").classList.toggle("change");
-    document.getElementById("nav").classList.toggle("change");
-    document.getElementById("menu-bg").classList.toggle("change-bg");
-});
-
-botaoLogin.addEventListener("click", function () {
-    modalLogin.hidden = false;
-    document.body.style.overflow = "hidden";
-})
 
 botaoContinuar.addEventListener("click", function(){
     modalPagamento.hidden = false;
@@ -357,22 +344,12 @@ botaoDepositar.addEventListener("click", function (e) {
 // ===== FIM ===== //
 
 // ===== BOTÃO FECHAR MODAL ===== //
-botaoFecharTela.addEventListener("click", function () {
-    modalCadastro.hidden = true;
-    document.body.style.overflow = "auto";
-});
 
-botaoFecharDeposito.addEventListener("click", function () {
+botaoFecharDeposito.addEventListener("click", function (e) {
+    e.preventDefault()
     modalSaldo.hidden = true;
     document.body.style.overflow = "auto";
     erroDepositarSaldo.textContent = ""
-});
-
-botaoFecharLogin.addEventListener("click", function (e) {
-    e.preventDefault()
-    modalLogin.hidden = true;
-    erroLogin.textContent = "";
-    document.body.style.overflow = "auto";
 });
 
 botaoFecharPagamento.addEventListener("click", function(e){
@@ -384,99 +361,6 @@ botaoFecharPagamento.addEventListener("click", function(e){
 })
 
 // ===== FIM ===== //
-
-// ===== CADASTRAR ITENS ===== //
-
-botaoAdicionarProduto.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const produto = {
-        nome: nomeProdutoInput.value,
-        preco: Number(precoProdutoInput.value),
-        descricao: descricaoProdutoInput.value
-    };
-
-    console.log(produto);
-
-    // ===== Enviar dados para o Node.js ===== //
-
-    fetch("http://localhost:3000/salvarProduto", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(produto)
-    });
-
-    nomeProdutoInput.value = "";
-    precoProdutoInput.value = "";
-    descricaoProdutoInput.value = "";
-});
-
-// ===== MENU DE LOGIN ===== //
-
-const botaoEntrar = document.getElementById("botaoLoginUsuario");
-const inputEmailLogin = document.getElementById("inputEmailLogin");
-const inputSenhaLogin = document.getElementById("inputSenhaLogin");
-const erroLogin = document.getElementById("erroLogin");
-
-const usuarioId = document.getElementById("usuarioId");
-const usuarioNivel = document.getElementById("usuarioNivel");
-
-const textoBotaoUsuario = document.getElementById("textoBotaoUsuario")
-
-fetch("./database/usuarios.json")
-.then(res => res.json())
-.then(usuarios => {
-
-    usuarios.forEach(usuario => {
-        botaoEntrar.addEventListener("click", function(e){
-            e.preventDefault()
-
-            if(inputEmailLogin.value === usuario.email && inputSenhaLogin.value === usuario.senha){
-                modalLogin.hidden = true;
-                document.body.style.overflow = "auto";
-
-                botaoLogin.hidden = true;
-                botaoUsuario.hidden = false;
-                botaoCadastrarItens.disabled = false;
-                botaoCadastrarItens.classList.add("cadastroAdminLiberado");
-                textoBotaoUsuario.textContent = `Olá, ${usuario.nome}`
-                usuarioId.textContent = `Usuário: ${usuario.id}`
-                usuarioNivel.textContent = `Nivel: ${usuario.nivel}`
-
-                erroLogin.textContent = ""
-                inputEmailLogin.value = "";
-                inputSenhaLogin.value = "";
-            }else{
-                erroLogin.textContent = "Usuário não encontrado!"
-                inputEmailLogin.value = "";
-                inputSenhaLogin.value = "";
-                return
-            };
-        });
-    });
-});
-
-// ===== MENU USUÁRIO ===== //
-
-const botaoUsuario = document.getElementById("botaoUsuario");
-const menuUsuario = document.getElementById("menuUsuario");
-
-const botaoLogout = document.getElementById("botaoLogout");
-
-botaoUsuario.addEventListener("click", function(){
-    menuUsuario.classList.toggle("menuUsuarioAberto");
-})
-
-botaoLogout.addEventListener("click", function(e){
-    e.preventDefault()
-
-    botaoUsuario.hidden = true;
-    botaoLogin.hidden = false;
-    botaoCadastrarItens.disabled = true;
-    botaoCadastrarItens.classList.remove("cadastroAdminLiberado");
-    usuarioId.textContent = "";
-    usuarioNivel.textContent = "";
-})
 
 
 // ===== LISTA DE ITENS ADICIONADOS ===== //
@@ -503,64 +387,3 @@ botaoVoltar.addEventListener("click", function(e){
     sessaoCarrinho.classList.toggle("abrirCarrinho")
     document.body.classList.toggle("travarBody")
 })
-
-// ===== Arrasto (Drag) menu de pagamento ===== //
-
-const barra = document.querySelector(".puxarAbaPagamento");
-const areaPagamento = document.querySelector(".areaPagamento");
-let listaCarrinhoPagamento = document.querySelector(".listaCarrinho");
-
-let estaArrastando = false;
-let startY = 0;
-let currentY = 0;
-let translateY = 0;
-
-// Ao apertar
-barra.addEventListener("pointerdown", (e) => {
-    estaArrastando = true;
-    startY = e.clientY;
-});
-
-// Enquanto move
-window.addEventListener("pointermove", (e) => {
-    if(!estaArrastando) return;
-
-    currentY = e.clientY;
-    const delta = currentY - startY;
-
-    let novoTranslate = translateY + delta;
-
-    if(novoTranslate < 0){
-        listaCarrinhoPagamento.style.height = "55%"
-        novoTranslate = 0;
-    } 
-    if(novoTranslate > 185){
-        listaCarrinhoPagamento.style.height = "77%"
-        novoTranslate = 185;
-    } 
-
-    areaPagamento.style.transform = `translateY(${novoTranslate}px)`
-});
-
-// Ao soltar
-
-window.addEventListener("pointerup", (e) => {
-    if(!estaArrastando) return;
-
-    estaArrastando = false;
-
-    const delta = e.clientY - startY;
-    translateY += delta;
-
-    if (translateY > 50){
-        translateY = 185;
-        listaCarrinhoPagamento.style.height = "77%"
-    }else{
-        translateY = 0;
-        
-        listaCarrinhoPagamento.style.height = "55%"
-    }
-
-    areaPagamento.style.transform = `translateY(${translateY}px)`
-});
-

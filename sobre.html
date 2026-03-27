@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/sobre.css">
+</head>
+<body>
+    <!-- HEADER GLOBAL -->
+    <header class="header">
+        <section class="sectionMenu">
+            <div id="menu">
+                <!-- Botão Hamburger -->
+                <div id="hamburger" onclick="menuOnClick()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+
+                <!-- Menu de Navegação -->
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><button id="adicionarSaldo" class="btnAdicionarSaldo" style="cursor: no-drop; color: rgba(0, 0, 0, 0.50)" disabled>Adicionar Saldo</button></li>
+                        <li><button id="btnCadastrarItem" class="botaoCadastroAdmin" disabled="true">Cadastrar Itens</button></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p class="menu-bg" id="menu-bg"></p>
+            
+            <!-- Carrinho -->
+            <a id="carrinho" disabled><img class="carrinho" src="assets/Carrinho.png" width="32px" height="32px"></a>
+            
+            <!-- Logo -->
+            <a href="index.html" class="home"><img class="logo" src="assets/logo.png" width="64px" height="64px"></a>
+
+            <!-- Usuário -->
+            
+            <button class="botaoLogin" id="botaoLogin">Entrar</button>
+            <button class="botaoUsuario" id="botaoUsuario" hidden="true">
+                <p id="textoBotaoUsuario" class="textoBotaoUsuario">Usuario</p>
+                <div class="menuUsuario" id="menuUsuario">
+                    <p id="usuarioId">Nome do Usuario</p>
+                    <p id="usuarioNivel">Ex:Usuario Comum</p>
+                    <span id="botaoLogout" class="botaoLogout">Sair</span>
+                </div>
+            </button>
+            
+        </section>
+
+    </header>
+    
+
+    <main class="mainSobre">
+
+        <section class="portifolio">
+            <h1>Mini Marketplace</h1>
+            <p>Um pequeno sistema de carrinho de compras desenvolvido para auxiliar na organização de compras em supermercados.</p>
+            <p>O projeto é voltado principalmente para pessoas com orçamento limitado, que precisam planejar melhor suas compras. Com ele, é possível selecionar os produtos antes de ir ao mercado, tendo uma noção mais precisa de quanto será gasto.</p>  
+            <p>No sistema não possui uma base de dados completa de mercados específicos. Portanto, o próprio usuário deve cadastrar os produtos manualmente, podendo utilizar, por exemplo, uma nota fiscal antiga como referência para inserir nome, preço e descrição dos itens.</p>
+            <p>Muitas pessoas costumam comprar sempre os mesmos produtos, mas eventualmente desejam variar. No entanto, limitações financeiras podem dificultar essas escolhas. O Mini Marketplace surge como uma ferramenta para auxiliar nesse controle, permitindo mais planejamento e decisões mais conscientes.</p>
+
+            <h3>Funcionalidades</h3>
+            <ul>
+                <li>Adicionar e remover itens do carrinho</li>
+                <li>Ajustar a quantidade de cada item</li>
+                <li>Cálculo automático do total do carrinho</li>
+                <li>Simulação de depósito de saldo (valor fictício)</li>
+                <li>Divisão do valor total entre até 4 pessoas</li>
+                <li>Cálculo de troco após pagamento (atualizando o saldo)</li>
+            </ul>
+
+            <h3>Como executar?</h3>
+            <p>O projeto pode ser executado diretamente pelo navegador, através do GitHub Pages (ou abrindo o arquivo index.html localmente).</p>
+
+            <h2>Sobre o projeto</h2>
+            <p>Este projeto foi desenvolvido com foco em aprendizado, com base nos conhecimentos adquiridos durante o curso de Análise e Desenvolvimento de Sistemas.</p>
+            <p>Atualmente, ele está em desenvolvimento contínuo e recebe atualizações frequentes. O objetivo é melhorar a organização do código, a legibilidade e a experiência do usuário conforme a evolução dos estudos.</p>
+
+            <h3>O que temos nesse projeto?</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>JSON (utilizado como um pequeno banco de dados local)</li>
+            </ul>
+
+            <h3>Linha do Tempo</h3>
+            <div class="box_versao">
+                <h4># Versão 1.0</h4>
+                <ul class="imagensLinhaDoTempo">
+                    <img src="assets/versao_1.0.jpg">
+                    <img src="assets/menuAberto_1.0.jpg">
+                    <img src="assets/loginAberto_1.0.jpg">
+                    <img src="assets/listaCarrinho_1.0.png">
+                </ul>
+            </div>
+            <div class="box_versao">
+                <h4># Versão Beta</h4>
+                <ul class="imagensLinhaDoTempo">
+                    <img src="assets/versaoBeta.png">
+                </ul>
+            </div>
+
+            <h3>Melhorias Futuras</h3>
+            <p>Atualmente, o projeto possui muitos eventos ligados diretamente a botões e poucas funções reutilizáveis. Nas próximas atualizações, a intenção é:</p>
+            <ul>
+                <li>Melhorar a estrutura do código</li>
+                <li>Aumentar o uso de funções</li>
+                <li>Tornar o código mais modular e de fácil manutenção</li>
+            </ul>
+
+        </section>
+
+
+
+
+        <!-- ===== ===== ===== ===== ===== SEÇÃO MODAL ===== ===== ===== ===== ===== -->
+
+        <!-- Cadastrar Itens -->
+
+        <div class="modalCadastro" id="modalCadastro" hidden="true">
+            <div id="menuCadastro" class="cadastro">
+                <h3>Cadastrar Item</h3>
+                <form class="form">
+                    <input type="text" placeholder="Item" id="inputItem">
+                    <input type="number" placeholder="Preço" id="inputPreco">
+                    <input type="text" placeholder="Descrição" id="inputDescricao">
+                    <button type="submit" id="botaoAdicionarProduto">Adicionar</button>
+                    <button id="fecharTela">Fechar</button>
+                    <p>Como adicionar?</p>
+                    <p>Ex: Coca-Cola 350ml</p>
+                    <p>Preços devem conter pontos (".") no lugar de vírgulas. Não colocar "R$"!</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Usuário -->
+
+        <div class="modalLogin" id="modalLogin" hidden="true">
+            <div class="menuLogin">
+                <h3>Login Usuário</h3>
+                <form class="form">
+                    <label for="inputEmailLogin">Usuário:</label>
+                    <input type="text" id="inputEmailLogin" placeholder="Usuário">
+                    <label for="inputSenhaLogin">Senha:</label>
+                    <input type="password" id="inputSenhaLogin" placeholder="Digite sua senha">
+                    <label id="erroLogin" class="erroLogin"></label>
+                    <button id="botaoLoginUsuario">Entrar</button>
+                    <button id="fecharLogin">Fechar</button>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footerSobre">
+        <h3>Autor</h3>
+        <p>Luiz — Estudante de Análise e Desenvolvimento de Sistemas</p>
+    </footer>
+
+    <script src="header.js"></script>
+</body>
+</html>

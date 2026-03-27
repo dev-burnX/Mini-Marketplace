@@ -1,0 +1,61 @@
+:root{
+    --font-principal: "Jura", sans-serif;
+    --cor-principal:#127369;
+    --cor-secundaria:white;
+    --cor-fundo:#13504a;
+    --cor-texto-principal: black;
+    --cor-texto-secundario:#7e7e7e;
+    --cor-texto-botoes:#d4d4d4;
+    --cor-texto-preco:green;
+    --cor-sombras: rgba(0, 0, 0, 0.30);
+    --cor-sombras-claro: rgba(0, 0, 0, 0.15);
+    --cor-bordas: rgba(175, 175, 175, 0.75);
+    --cor-icons: invert(0.8);
+}
+
+.mainSobre{
+    padding: 2rem;
+    margin: 5rem 0 0 0;
+}
+
+.portifolio{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.portifolio ul{
+    padding: 0 1.1rem;
+}
+
+.portifolio ul li{
+    padding: 4px;
+}
+
+.footerSobre{
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-botoes);
+    padding: 2rem;
+}
+
+/* ===== LINHA DO TEMPO ===== */
+.box_versao{
+    padding: 1rem;
+    box-shadow: 1px 1px 10px var(--cor-sombras);
+    border-radius: 5px;
+    background-color: rgb(247, 247, 247);
+}
+
+.imagensLinhaDoTempo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.imagensLinhaDoTempo img{
+    width: 120px;
+    box-shadow: 1px 1px 10px var(--cor-sombras);
+    border-radius: 5px;
+}
