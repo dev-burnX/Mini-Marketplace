@@ -1,4 +1,4 @@
-# Mini Marketplace v1.0
+# Mini Marketplace v1.0 (MOBILE)
 
     Um pequeno sistema de carrinho de compras desenvolvido para auxiliar na organização de compras em supermercados.
 
@@ -43,6 +43,7 @@
     - Tornar o código mais modular e de fácil manutenção
     - Adicionar menu de cadastro de usuário
     - Melhorar banco de dados (ex: LocalStorage)
+    - Responsividade para versão Desktop e Tablets (Atualmente somente Mobile)
 
 ## Autor
 
